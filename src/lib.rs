@@ -1,8 +1,8 @@
-#![feature(slice_range)]
+#![feature(int_log)]
 
 extern crate core;
 
-mod board;
+pub mod board;
 mod math;
-mod player;
+pub mod player;
 mod ships;

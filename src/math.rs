@@ -39,7 +39,7 @@ impl Rotation {
     }
 }
 
-#[derive(Eq, PartialEq, Hash)]
+#[derive(Eq, PartialEq, Hash, Debug)]
 pub struct Vec2 {
     x: u64,
     y: u64,
@@ -73,10 +73,32 @@ impl Vec2 {
         self.y = y;
     }
 
-    pub fn sum(&self, other: &Self) -> Self {
+    pub fn add(&self, other: &Self) -> Self {
         Self {
             x: self.x + other.x,
             y: self.y + other.y,
         }
+    }
+
+    pub fn sub(&self, other: &Self) -> Self {
+        Self {
+            x: self.x - other.x,
+            y: self.y - other.y,
+        }
+    }
+
+    // Greater or Equal
+    pub fn ge(&self, other: &Self) -> bool {
+        self.x >= other.x && self.y >= other.y
+    }
+
+    // Lower Than
+    pub fn lt(&self, other: &Self) -> bool {
+        self.x < other.x && self.y < other.y
+    }
+
+    pub fn is_inside(&self, start: &Self, size: &Self) -> bool {
+        let end = start.add(size);
+        self.ge(start) && self.lt(&end)
     }
 }
