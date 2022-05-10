@@ -183,6 +183,12 @@ mod test {
     }
 
     #[test]
+    fn aircraft_ship() {
+        let ship = Ship::new_aircraft_carrier();
+        assert_eq!(String::from("--**-\n**xx*\n--**-"), ship_to_content(&ship));
+    }
+
+    #[test]
     fn rotation_down() {
         let ship = Ship::new_minesweeper().rotate(Rotation::Down);
 

@@ -9,7 +9,7 @@ pub enum Rotation {
 }
 
 impl Rotation {
-    pub fn random() -> Self {
+    pub fn random() -> Rotation {
         let value = thread_rng().gen_range(0..=3);
         match value {
             0 => Self::Left,
@@ -46,11 +46,11 @@ pub struct Vec2 {
 }
 
 impl Vec2 {
-    pub fn new(x: u64, y: u64) -> Self {
+    pub fn new(x: u64, y: u64) -> Vec2 {
         Self { x, y }
     }
 
-    pub fn swap(&self) -> Self {
+    pub fn swap(&self) -> Vec2 {
         Self {
             x: self.y,
             y: self.x,
@@ -73,14 +73,14 @@ impl Vec2 {
         self.y = y;
     }
 
-    pub fn add(&self, other: &Self) -> Self {
+    pub fn add(&self, other: &Vec2) -> Vec2 {
         Self {
             x: self.x + other.x,
             y: self.y + other.y,
         }
     }
 
-    pub fn sub(&self, other: &Self) -> Self {
+    pub fn sub(&self, other: &Vec2) -> Vec2 {
         Self {
             x: self.x - other.x,
             y: self.y - other.y,
@@ -88,16 +88,16 @@ impl Vec2 {
     }
 
     // Greater or Equal
-    pub fn ge(&self, other: &Self) -> bool {
+    pub fn ge(&self, other: &Vec2) -> bool {
         self.x >= other.x && self.y >= other.y
     }
 
     // Lower Than
-    pub fn lt(&self, other: &Self) -> bool {
+    pub fn lt(&self, other: &Vec2) -> bool {
         self.x < other.x && self.y < other.y
     }
 
-    pub fn is_inside(&self, start: &Self, size: &Self) -> bool {
+    pub fn is_inside(&self, start: &Vec2, size: &Vec2) -> bool {
         let end = start.add(size);
         self.ge(start) && self.lt(&end)
     }
