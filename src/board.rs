@@ -97,14 +97,10 @@ impl Board {
             let _ = write!(content, "{}: ", int_to_str(i));
 
             for j in 0..self.columns {
-                let global_point = Vec2::new(j, i);
                 let mut value = 0;
 
-                if let Some(cell) = self.get_cell(&global_point) {
-                    let inner_point = global_point.sub(&cell.start);
-                    if let Some(v) = self.values.get(&inner_point) {
-                        value = *v;
-                    }
+                if let Some(v) = self.values.get(&Vec2::new(j, i)) {
+                    value = *v;
                 }
 
                 let _ = write!(
@@ -140,7 +136,6 @@ impl Board {
         let mut starting_points = Board::starting_points(&ship.size(), values, config);
 
         if starting_points.len() == 0 {
-            println!("here");
             let tried = [false, false, false, false];
 
             while (starting_points.len() == 0) ^ !tried.contains(&false) {
