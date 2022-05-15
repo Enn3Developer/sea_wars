@@ -136,7 +136,7 @@ impl Board {
         let mut starting_points = Board::starting_points(&ship.size(), values, config);
 
         if starting_points.len() == 0 {
-            let tried = [false, false, false, false];
+            let tried = [false, false];
 
             while (starting_points.len() == 0) ^ !tried.contains(&false) {
                 if !tried[0] {
@@ -148,20 +148,6 @@ impl Board {
                 }
                 if !tried[1] {
                     ship = ship.rotate(Rotation::Down);
-                    starting_points = Board::starting_points(&ship.size(), values, config);
-                    if starting_points.len() > 0 {
-                        break;
-                    }
-                }
-                if !tried[2] {
-                    ship = ship.rotate(Rotation::Right);
-                    starting_points = Board::starting_points(&ship.size(), values, config);
-                    if starting_points.len() > 0 {
-                        break;
-                    }
-                }
-                if !tried[3] {
-                    ship = ship.rotate(Rotation::Up);
                     starting_points = Board::starting_points(&ship.size(), values, config);
                     if starting_points.len() > 0 {
                         break;
