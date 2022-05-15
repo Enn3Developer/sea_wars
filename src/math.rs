@@ -102,3 +102,23 @@ impl Vec2 {
         self.ge(start) && self.lt(&end)
     }
 }
+
+#[cfg(test)]
+mod test {
+    use crate::math::Vec2;
+
+    #[test]
+    fn add() {
+        assert_eq!(Vec2::new(2, 2), Vec2::new(1, 1).add(&Vec2::new(1, 1)));
+    }
+
+    #[test]
+    fn sub() {
+        assert_eq!(Vec2::new(0, 0), Vec2::new(1, 1).sub(&Vec2::new(1, 1)));
+    }
+
+    #[test]
+    fn inside() {
+        assert!(Vec2::new(1, 1).is_inside(&Vec2::new(0, 0), &Vec2::new(2, 2)));
+    }
+}
