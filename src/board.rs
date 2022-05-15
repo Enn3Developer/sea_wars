@@ -97,7 +97,7 @@ impl Board {
             let _ = write!(content, "{}: ", int_to_str(i));
 
             for j in 0..self.columns {
-                let global_point = Vec2::new(i, j);
+                let global_point = Vec2::new(j, i);
                 let mut value = 0;
 
                 if let Some(cell) = self.get_cell(&global_point) {
@@ -215,11 +215,6 @@ impl Board {
         config: &BoardConfig,
     ) -> bool {
         let end = size.add(start);
-        println!("Start: {:?}", start);
-        println!("Size: {:?}", size);
-        println!("End: {:?}", end);
-        println!("Columns: {}; Rows: {}", config.columns, config.rows);
-        println!("=============");
         if end.x() > config.columns || end.y() > config.rows {
             return false;
         }
