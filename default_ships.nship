@@ -1,0 +1,6 @@
+name = aircraft_carrier
+points = 11
+components_1 = 0 0 1 1 0
+components_2 = 1 1 2 2 1
+components_3 = 0 0 1 1 0
+===================================

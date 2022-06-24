@@ -26,7 +26,12 @@ fn run(mut players: Vec<Box<dyn Player>>) {
 }
 
 fn main() {
+    let mut players: Vec<Box<dyn Player>> = vec![];
+
     let config = BoardConfig::new(10, 10, 1, 2, 2);
     let human = HumanPlayer::new(String::from("Enn3"), &config);
-    println!("{}", human.board().string_value(true, true));
+
+    players.push(Box::new(human));
+
+    run(players);
 }
